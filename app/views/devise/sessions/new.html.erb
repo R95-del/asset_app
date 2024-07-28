@@ -29,6 +29,11 @@
                     <%= f.password_field :password, autocomplete: "current-password", class: "form-control form-control-lg" %>
                   </div>
 
+                  <div class="form-outline mb-4">
+                    <%= f.label :admin, "Login as admin" %><br />
+                    <%= f.check_box :admin %>
+                  </div>
+
                   <div class="actions">
                     <%= f.submit "Log in", class: "btn btn-dark btn-lg btn-block"%>
                   </div>
@@ -42,5 +47,3 @@
     </div>
   </div>
 </section>
-
-
