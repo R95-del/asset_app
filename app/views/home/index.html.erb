@@ -1,13 +1,23 @@
 <div class="home-page page-body h-75 ">
   <%= render 'shared/heading' %>
   <section class="jumbotron bg-white">
-    <h1>
-      Inventory Management System
-    </h1>
-
     <div class="lead">
       Get your inventory related tasks done here!
     </div>
+
+    <div class="container mt-5">
+      <div class="jumbotron">
+        <h1 class="display-4">Welcome to the Inventory Management System</h1>
+        <p class="lead">Manage your Brands, Categories, Items, and Allotments efficiently.</p>
+        <hr class="my-4">
+        <p>Use the navigation bar to access different sections of the application.</p>
+        <a class="btn btn-primary btn-lg" href="<%= brands_path %>" role="button">Manage Brands</a>
+        <a class="btn btn-secondary btn-lg" href="<%= categories_path %>" role="button">Manage Categories</a>
+        <a class="btn btn-success btn-lg" href="<%= items_path %>" role="button">Manage Items</a>
+        <a class="btn btn-info btn-lg" href="<%= allotments_path %>" role="button">Manage Allotments</a>
+      </div>
+  </div>
+
 
     <% if !user_signed_in? %>
       <div class="button-div">

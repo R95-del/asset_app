@@ -95,8 +95,10 @@
     </header>
 
     <div class="container mt-4">
-      <%= render 'shared/error_messages', object: resource %>
+      <% if defined?(resource) %>
+        <%= render 'shared/error_messages', object: resource %>
+      <% end %>
       <%= yield %>
-    </div>
+  </div>
   </body>
 </html>
