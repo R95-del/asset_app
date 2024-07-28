@@ -1,0 +1,15 @@
+# app/views/allotments/index.xlsx.axlsx
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Allotments") do |sheet|
+  sheet.add_row ["User", "Item", "Allotment Quantity", "Category", "Created At", "Dealloted At"]
+  @allotments.each do |allotment|
+    sheet.add_row [
+      allotment.user&.email,
+      allotment.item&.name,
+      allotment.allotment_quantity,
+      allotment.category&.name,
+      allotment.created_at,
+      allotment.dealloted_at
+    ]
+  end
+end

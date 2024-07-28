@@ -70,3 +70,7 @@
     <%= link_to "Add New Item", new_item_path, class: "btn btn-lg btn-primary"  %>
   </div>
 <% end %>
+
+<% if current_user.admin? && defined?(export_path) %>
+  <%= link_to "Export to Excel", export_path, class: "btn btn-success btn-primary" %>
+<% end %>

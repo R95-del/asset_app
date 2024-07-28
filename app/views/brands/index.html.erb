@@ -3,5 +3,5 @@
 <main class="page-body">
   <%= render 'shared/heading' %>
 
-  <%= render 'shared/assest_cards', asset_type: 'Brand' , assets: @brands, add_path: new_brand_path %>
+  <%= render 'shared/assest_cards', asset_type: 'Brand' , assets: @brands, add_path: new_brand_path, export_path: brands_path(format: :xlsx) %>
 </main>

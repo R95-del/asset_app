@@ -1,0 +1,15 @@
+# app/views/brands/index.xlsx.axlsx
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Brands") do |sheet|
+  sheet.add_row ["Name", "Manufacturer", "Manufacturer Email", "Manufacturer Office", "Created At", "Updated At"]
+  @brands.each do |brand|
+    sheet.add_row [
+      brand.name,
+      brand.manufacturer,
+      brand.manufacturer_email,
+      brand.manufacturer_office,
+      brand.created_at,
+      brand.updated_at
+    ]
+  end
+end

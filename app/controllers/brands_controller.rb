@@ -4,6 +4,13 @@ class BrandsController < ApplicationController
 
   def index
     @brands = Brand.all
+
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="brands.xlsx"'
+      }
+    end
   end
 
   def create
@@ -37,13 +44,13 @@ class BrandsController < ApplicationController
     @brand.destroy
     redirect_to root_path, flash: { success: "Brand deleted." }, status: 303
   end
-  
+
   private
 
   def brand_params
     params.require(:brand).permit(:name, :manufacturer, :manufacturer_email, :manufacturer_office)
-  end 
-  
+  end
+
   def set_brand_id
     @brand = Brand.find(params[:id])
   end

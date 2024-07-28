@@ -29,6 +29,9 @@ gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem 'awesome_print'
 
+gem 'axlsx'
+gem 'axlsx_rails'
+
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end

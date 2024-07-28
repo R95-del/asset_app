@@ -5,6 +5,13 @@ class  AllotmentsController < ApplicationController
 
   def index
     @allotments = Allotment.all
+
+    respond_to do |format|
+      format.html
+      format.xlsx {
+        response.headers['Content-Disposition'] = 'attachment; filename="allotments.xlsx"'
+      }
+    end
   end
 
   def new
@@ -46,5 +53,5 @@ class  AllotmentsController < ApplicationController
   def update_quantity_params
     params.require(:allotment).permit(:allotment_quantity)
   end
-  
+
 end

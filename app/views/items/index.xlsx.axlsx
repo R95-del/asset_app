@@ -1,0 +1,19 @@
+# app/views/items/index.xlsx.axlsx
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Items") do |sheet|
+  sheet.add_row ["Name", "Description", "In Stock", "Price", "Minimum Required Stock", "Quantity", "Total Stock", "Procurement Time in Weeks", "Brand", "Category"]
+  @items.each do |item|
+    sheet.add_row [
+      item.name,
+      item.description,
+      item.in_stock,
+      item.price,
+      item.minimum_required_stock,
+      item.quantity,
+      item.total_stock,
+      item.procurement_time_in_weeks,
+      item.brand&.name,
+      item.category&.name
+    ]
+  end
+end
