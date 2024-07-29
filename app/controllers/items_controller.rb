@@ -43,6 +43,16 @@ class ItemsController < ApplicationController
     redirect_to items_url, flash: { success: "Item deleted." }
   end
 
+  def export_pdf
+    @items = Item.all
+    respond_to do |format|
+      format.pdf do
+        pdf = ItemPdf.new(@items)
+        send_data pdf.render, filename: 'items.pdf', type: 'application/pdf', disposition: 'inline'
+      end
+    end
+  end
+
   private
 
   def item_params

@@ -4,7 +4,7 @@
   <%= render 'shared/heading' %>
 
   <% if user_signed_in? && current_user.admin? %>
-    <%= render 'manage', items: @items, export_path: brands_path(format: :xlsx) %>
+    <%= render 'manage', items: @items, export_path: items_path(format: :xlsx), export_pdf_path: export_pdf_items_path %>
 
   <% elsif user_signed_in? %>
     <%= render 'shared/assest_cards', asset_type: 'Item' , assets: @items %>

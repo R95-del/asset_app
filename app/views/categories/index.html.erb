@@ -2,6 +2,12 @@
 
 <main class="page-body">
   <%= render 'shared/heading' %>
-  
-  <%= render 'shared/assest_cards', asset_type: 'Category', assets: @categories, add_path: new_category_path, export_path: brands_path(format: :xlsx) %>
+
+  <%= render 'shared/assest_cards',
+    asset_type: 'Category',
+    assets: @categories,
+    add_path: new_category_path,
+    export_path: categories_path(format: :xlsx),
+    export_pdf_path: export_pdf_categories_path
+  %>
 </main>

@@ -1,8 +1,11 @@
 <% provide(:title, 'All Allotments') %>
 
 <main class="page-body">
+
   <%= render 'shared/heading' %>
   <%= link_to "Export to Excel", allotments_path(format: :xlsx), class: "btn btn-success mt-3" %>
+  <%= link_to "Export to PDF", export_pdf_allotments_path, class: "btn btn-danger mt-3" %>
+
   <% if @allotments.blank? %>
     <div>
       NO allotments have been made as of now.

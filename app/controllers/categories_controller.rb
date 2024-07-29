@@ -45,6 +45,16 @@ class CategoriesController < ApplicationController
     redirect_to category_path
   end
 
+  def export_pdf
+    @categories = Category.all
+    respond_to do |format|
+      format.pdf do
+        pdf = CategoryPdf.new(@categories)
+        send_data pdf.render, filename: 'categories.pdf', type: 'application/pdf', disposition: 'inline'
+      end
+    end
+  end
+
   private
 
   def category_params

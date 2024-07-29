@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| "https://github.com/R95-del/asset_app" }
 
 ruby "3.0.0"
 
@@ -28,7 +28,8 @@ gem "dotenv-rails"
 gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem 'awesome_print'
-
+gem 'prawn'
+gem 'prawn-table'
 gem 'axlsx'
 gem 'axlsx_rails'
 

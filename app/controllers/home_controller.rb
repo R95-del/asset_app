@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     if @user.update(user_params)
       redirect_to root_path, flash: {success: "updated successfully"}
     else
-      render 'edit_user'  
+      render 'edit_user'
     end
   end
 
@@ -24,12 +24,22 @@ class HomeController < ApplicationController
     redirect_to root_path, flash: { success: "user destroy" }, status: 303
   end
 
+  def export_pdf
+    @users = User.all
+    respond_to do |format|
+      format.pdf do
+        pdf = UserPdf.new(@users)
+        send_data pdf.render, filename: 'users.pdf', type: 'application/pdf', disposition: 'inline'
+      end
+    end
+  end
+
   private
 
   def set_user_id
     @user = User.find(params[:id])
   end
-  
+
   def user_params
     params.require(:user).permit(:name, :email, :admin, :password,:password_confirmation)
   end

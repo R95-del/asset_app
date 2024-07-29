@@ -45,6 +45,16 @@ class BrandsController < ApplicationController
     redirect_to root_path, flash: { success: "Brand deleted." }, status: 303
   end
 
+  def export_pdf
+    @brands = Brand.all
+    respond_to do |format|
+      format.pdf do
+        pdf = BrandPdf.new(@brands)
+        send_data pdf.render, filename: 'brands.pdf', type: 'application/pdf', disposition: 'inline'
+      end
+    end
+  end
+
   private
 
   def brand_params

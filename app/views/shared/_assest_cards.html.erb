@@ -33,5 +33,8 @@
     <% if defined?(export_path) %>
       <%= link_to "Export to Excel", export_path, class: "btn btn-success btn-primary" %>
     <% end %>
+    <% if defined?(export_pdf_path) %>
+      <%= link_to "Export to PDF", export_pdf_path, class: "btn btn-danger btn-primary" %>
+    <% end %>
   </div>
 <% end %>

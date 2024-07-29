@@ -1,5 +1,5 @@
 class  AllotmentsController < ApplicationController
-  before_action :set_allotments_id, only: %i[edit deallot update]
+  before_action :set_allotments_id, only: %i[edit show deallot update]
 
   include Allotments::AllotmentModule
 
@@ -24,6 +24,9 @@ class  AllotmentsController < ApplicationController
     create_allotment
   end
 
+  def show
+  end
+
   def edit
   end
 
@@ -40,14 +43,26 @@ class  AllotmentsController < ApplicationController
     deallot_allotment
   end
 
+  def export_pdf
+    @allotments = Allotment.all
+    respond_to do |format|
+      format.pdf do
+        pdf = AllotmentPdf.new(@allotments)
+        send_data pdf.render, filename: 'allotments.pdf', type: 'application/pdf', disposition: 'inline'
+      end
+    end
+  end
+
   private
 
   def allotment_params
     params.require(:allotment).permit(:user_id, :item_id, :category_id, :allotment_quantity)
   end
 
-  def set_allotments_id
+  def set_allotment
     @allotment = Allotment.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to allotments_path, flash: { error: "Allotment not found" }
   end
 
   def update_quantity_params

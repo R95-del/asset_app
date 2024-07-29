@@ -48,6 +48,8 @@
             <td>
               <%= link_to "Edit", edit_user_home_path(u), class: "btn btn-danger fa-solid fa-trash" %>
               <%= link_to 'destroy', destroy_user_home_path(u),data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-danger fa-solid fa-trash" %>
+              <%= link_to "Export to PDF", export_pdf_home_index_path, class: "btn btn-success" %>
+
             </td>
           </tr>
         <% end %>
@@ -61,7 +63,7 @@
     <div class="button-div">
       <%= link_to "New Allotment", new_allotment_path, class: "btn btn-lg btn-primary" %>
     </div>
-  <% end %> 
+  <% end %>
 <%
 =end%>
 </main>

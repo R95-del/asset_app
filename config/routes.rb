@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :home do
       collection do
         get 'users_details', to: 'home#user_show'
+        get 'export_pdf', defaults: { format: :pdf }
       end
 
       member do
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
         patch 'update_user', to: 'home#update_user'
         delete 'destroy_user', to: 'home#destroy_user'
       end
+
     end
 
   root 'home#index'
@@ -23,16 +25,33 @@ Rails.application.routes.draw do
     member do
       get 'deallot'
     end
+
+    collection do
+      get :export_pdf, defaults: { format: :pdf }
+    end
   end
 
-  resources :brands
-  resources :categories
+  resources :brands do
+    collection do
+      get :export_pdf, defaults: { format: :pdf }
+    end
+  end
+
+  resources :categories do
+    collection do
+      get :export_pdf, defaults: { format: :pdf }
+    end
+  end
 
   resources :items do
     member do
       get 'allotments'
       get 'managestock', to: 'items#manage_item_stock'
       patch 'updatestock', to: 'items#update_stock'
+    end
+
+    collection do
+      get :export_pdf, defaults: { format: :pdf }
     end
   end
 
