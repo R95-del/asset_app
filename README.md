@@ -15,8 +15,8 @@ The Inventory Management System (IMS) is a web application designed to manage it
 
 ## Installation
 ### Prerequisites
-- Ruby (version 2.7.2 or later)
-- Rails (version 6.1.4 or later)
+- Ruby (version 3.0.0)
+- Rails (version 7.0.4)
 - PostgreSQL
 
 ### Steps
